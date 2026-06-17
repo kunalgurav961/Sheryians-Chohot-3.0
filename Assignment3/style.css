@@ -1,0 +1,185 @@
+@import url('https://googleapis.com');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+main{
+    width: 100%;
+    height: 70%;
+    /* background-color: #141217; */
+    /* background-color: #141217a4; */
+    /* z-index: 1; */
+}
+
+.overlay{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    top:0;
+    left: 0;
+    overflow: hidden;
+    z-index: -10;
+}
+.overlay img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px) brightness(0.9);
+}
+main nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+main nav .left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main nav .center{
+    
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+main nav .left img{
+    width: 80px;
+}
+main nav .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    font-size: 2.5rem;
+}
+
+main .moncky{
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+main .moncky img{
+    width: 100%;
+    height: 100%;
+}
+main .content{
+    width: 76%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    line-height: 49px;
+}
+
+main .content h1{
+    font-size: 5rem;
+    word-spacing: 3rem;
+    font-family: 'Shojumaru', cursive, sans-serif;
+    font-weight: 900;
+}
+main .content span:nth-child(1){
+    text-align: left;
+    width: 100%;
+    font-size: 1.4rem;
+    font-family: cursive;
+}
+
+main .content span:nth-child(3){
+    text-align: right;
+    width: 100%;
+    font-size: 1.4rem;
+    font-family: cursive;
+}
+/* Container to handle the alignment */
+.mint-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* The exact landing page button styling */
+.mint-now-btn {
+  /* Dimensions & Padding */
+  min-width: 240px;
+  padding: 14px 36px;
+  
+  /* Color Palette */
+  background-color: #FEDD79; /* Exact yellow-gold hex code */
+  color: #141217;            /* Dark text color from your page */
+  
+  /* Typography */
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 800;          /* Ultra bold */
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+
+  /* Shape and Border */
+  border: none;
+  border-radius: 4px;        /* Very slight rounded corners */
+  cursor: pointer;
+  
+  /* Shadow & Texture Simulation */
+  box-shadow: 
+    inset 0 -4px 0px rgba(0, 0, 0, 0.15), /* Bottom dark edge */
+    0px 8px 24px rgba(0, 0, 0, 0.3);      /* Soft shadow under button */
+  
+  /* Smooth transitions */
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
+/* Subtle Hover State Interaction */
+.mint-now-btn:hover {
+  background-color: #ffe494; /* Slightly brighter highlight */
+  transform: translateY(-2px); /* Gentle lift effect */
+  box-shadow: 
+    inset 0 -4px 0px rgba(0, 0, 0, 0.15),
+    0px 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* Active Pressed State */
+.mint-now-btn:active {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 0 -2px 0px rgba(0, 0, 0, 0.15),
+    0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.page2 {
+    width: 100%;
+    height: 60vh;
+    background-color: #141217;
+    margin-top: -120px; /* Pulls page2 up over the hero image */
+    position: relative;
+    z-index: 5; /* Keeps text columns below monkey/buttons but above background */
+
+    /* Perfect mathematical concave vector arc clip */
+    clip-path: ellipse(80% 100% at 50% 100%);
+}
