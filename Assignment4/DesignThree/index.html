@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexFit Bento Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        main {
+            display: grid;
+            grid-template-columns: repeat(4, 250px);
+            grid-template-rows: 180px 120px 140px 240px;
+            gap: 15px;
+        }
+        .card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        .img-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .c-man {
+            grid-area: 1 / 1 / 3 / 2;
+            padding: 0;
+        }
+        .man-stats {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.6);
+            padding: 10px;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .man-stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .man-stats span i {
+            background: #f7d002;
+            color: black;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .c-app {
+            grid-area: 1 / 2 / 2 / 3;
+            background-color: #f7d002;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .c-app h3 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .store-btns {
+            display: flex;
+            gap: 5px;
+        }
+        .store-btns div {
+            background: black;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.55rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .c-fonts {
+            grid-area: 1 / 3 / 2 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .c-fonts p {
+            font-size: 0.6rem;
+            color: #666;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+        .c-fonts h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .palette {
+            display: flex;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: auto;
+        }
+        .palette div { flex: 1; }
+        .c-strength {
+            grid-area: 1 / 4 / 4 / 5;
+            display: flex;
+            flex-direction: column;
+        }
+        .c-strength .top-tag {
+            font-size: 0.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+        .c-strength .top-tag::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #f7d002;
+            display: block;
+        }
+        .c-strength h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .location {
+            background-color: #f4cac2;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .location div {
+            width: 25px;
+            height: 25px;
+            background: black;
+            border-radius: 50%;
+        }
+        .c-limits {
+            grid-area: 3 / 1 / 4 / 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .c-limits h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        .c-limits p {
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .c-limits p::before {
+            content: 'F';
+            background: black;
+            color: #f7d002;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.6rem;
+        }
+        .c-logo {
+            grid-area: 2 / 2 / 4 / 4;
+            background-color: #fdfaf0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .c-logo h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .c-visit {
+            grid-area: 4 / 1 / 5 / 2;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+        }
+        .c-visit button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+            font-size: 1rem;
+        }
+        .c-visit::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: #f7d002;
+            z-index: 0;
+        }
+        .c-trainers {
+            grid-area: 4 / 2 / 5 / 3;
+            background-color: #eab4aa;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .c-trainers h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .c-trainers h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .c-trainers p {
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+        .avatars {
+            display: flex;
+            margin-top: 10px;
+        }
+        .avatars img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #eab4aa;
+            margin-left: -10px;
+        }
+        .avatars img:first-child { margin-left: 0; }
+        .c-rope {
+            grid-area: 4 / 3 / 5 / 4;
+            padding: 0;
+            background-color: #f7d002;
+        }
+        .c-rope .img-bg {
+            object-position: top;
+            clip-path: circle(70% at 50% 100%);
+        }
+        .c-phone {
+            grid-area: 4 / 4 / 5 / 5;
+            background-color: #f4cac2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 15px 0 15px;
+        }
+        .phone-frame {
+            width: 100%;
+            height: 100%;
+            background: black;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            padding: 5px 5px 0 5px;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #222;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            z-index: 2;
+            color: white;
+        }
+        .phone-overlay h3 { font-size: 1rem; margin-bottom: 10px;}
+        .phone-overlay button {
+            background: #f7d002;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="card c-man">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSl2imzAMr91I1n9HrDhJjjX_uRp20nPF4c41RYJM1ILKfOJiAm" class="img-bg">
+            <div class="man-stats">
+                <span><i>🔥</i> 35 MIN</span>
+                <span><i>⚡</i> NO EXCUSES</span>
+                <span><i>🏃</i> 7 DAYS</span>
+            </div>
+        </div>
+
+        <div class="card c-app">
+            <h3>Use our app for compiling a quality workout!</h3>
+            <div class="store-btns">
+                <div>Google Play</div>
+                <div>App Store</div>
+            </div>
+        </div>
+
+        <div class="card c-fonts">
+            <p>Headings font</p>
+            <h2>SUISSE BP INT'L</h2>
+            <p>Body</p>
+            <h2>SUISSE INT'L</h2>
+            <div class="palette">
+                <div style="background: #eab4aa;"></div>
+                <div style="background: #f7d002;"></div>
+                <div style="background: #fdfaf0;"></div>
+                <div style="background: #111;"></div>
+            </div>
+        </div>
+
+        <div class="card c-strength">
+            <div class="top-tag">TIME FOR FITNESS — 23</div>
+            <h1>OWN YOUR STRENGTH,<br>OWN YOU</h1>
+            <div class="location">
+                <div></div>
+                12834 FITNESS LN<br>BROOKLYN, NY
+            </div>
+        </div>
+
+        <div class="card c-limits">
+            <h3>REDEFINE YOUR LIMITS, ACHIEVE YOUR FITNESS GOALS</h3>
+            <p>LUXURY FITNESS EXPERIENCE</p>
+        </div>
+
+        <div class="card c-logo">
+            <h1>FlexFit</h1>
+        </div>
+
+        <div class="card c-visit">
+            <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&auto=format&fit=crop" class="img-bg">
+            <button>↗ Visit site</button>
+        </div>
+
+        <div class="card c-trainers">
+            <h3>Train with the best personal trainers</h3>
+            <div>
+                <h2>48+</h2>
+                <p>EXPERT TRAINERS</p>
+                <div class="avatars">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&fit=crop">
+                </div>
+            </div>
+        </div>
+
+        <div class="card c-rope">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjY6UIasuZLKYzd_PUv1U_eXWQKZgTkSDNfI54AbiXNXl5XFD2" class="img-bg">
+        </div>
+
+        <div class="card c-phone">
+            <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px;">
+                <span>FlexFit</span><span>2h</span>
+            </div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&auto=format&fit=crop" class="img-bg">
+                    <div class="phone-overlay">
+                        <h3>UNLOCK YOUR<br>POTENTIAL</h3>
+                        <button>SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
