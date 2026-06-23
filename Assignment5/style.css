@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+    color: #000;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.page1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 87%;
+    padding: 25px 0;
+}
+
+nav .left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav .we-are-hiring {
+    background-color: #EDDED5;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+nav .right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav .right a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+nav .right a:hover {
+    text-decoration: underline;
+}
+
+nav .right .get-in-touch {
+    padding: 12px 24px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+nav .right .get-in-touch:hover {
+    background: black;
+    color: white;
+}
+
+.branding {
+    width: 87%;
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.branding h1 {
+    font-size: 5.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.05;
+    max-width: 900px;
+    font-weight: 400;
+}
+
+.branding p {
+    font-size: 1.25rem;
+    max-width: 550px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.branding .our-services {
+    width: 180px;
+    height: 55px;
+    font-size: 1.1rem;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.branding .our-services:hover {
+    background-color: #333;
+}
+
+/* --- Marquee --- */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    padding: 3rem 0;
+    margin: 5rem 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.marquee-track {
+    display: inline-flex;
+    gap: 5rem;
+    animation: scroll-left 20s linear infinite;
+}
+
+.marquee-track .logo {
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    white-space: nowrap;
+    color: #111;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- Service Cards --- */
+.services-container {
+    display: flex;
+    gap: 2rem;
+    width: 87%;
+    margin-bottom: 5rem;
+}
+
+.service-card {
+    background-color: #e9e9e9;
+    padding: 3rem 2.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px;
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.2;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.service-card a {
+    color: #000;
+    text-decoration: underline;
+    font-size: 1rem;
+    margin-top: auto;
+    font-weight: 500;
+}
+
+.service-card a:hover {
+    text-decoration: none;
+}
+
+.our-work {
+    width: 87%;
+    margin: 6rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.small-title {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #555;
+}
+
+.header-titles h2 {
+    font-size: 4.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+}
+
+.btn-outline {
+    padding: 12px 30px;
+    border: 1px solid black;
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: black;
+    color: white;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 2rem;
+}
+
+.work-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.img-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    background-color: #e9e9e9;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.img-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.work-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work-info h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.tag {
+    border: 1px solid black;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
