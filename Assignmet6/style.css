@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.page1{
+    width: 100%;
+    min-height: 90vh;
+    border-bottom: 1px solid black;
+    background: url(https://www.twoleavestea.com/cdn/shop/files/cere-memorial_matcha_wide.png?v=1779304660&width=2700.0);
+    background-size: cover;
+    position: relative;
+}
+.page1 nav{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* justify-content: center; */
+    overflow: visible;
+    
+    align-items: center;
+}
+.page1 nav .top{
+    background-color: #272550;
+    color: white;
+    font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-spacing: 10px;
+    padding: 6px;
+    height: 21%;
+}
+.page1 nav .header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 95%;
+    margin: 0 auto;
+
+    background: white;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px 20px;
+    background: white;
+
+    border: 2px solid black;
+    border-radius: 20px;
+
+    z-index: 1000;
+}
+
+.page1 nav .header .menu{
+    display: none;
+}
+.page1 nav .header .left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 30%;
+}
+.page1 nav .header .left .nav-elem{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* border: 2px solid ; */
+
+}
+.page1 nav .header .left .nav-elem svg{
+    background-color: #A8D3EE;
+    padding: 2px 2px;
+    border: 1px solid black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+.page1 nav .header .left .nav-elem svg:nth-child(1){
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.page1 .center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page1 .right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 35%;
+}
+.page1 .right a{
+    text-decoration: none;
+    color: black;
+    font-size: 0.7rem;
+    font-weight: 400;
+}
+.page1 .right a:hover{
+    text-decoration: underline;
+    
+}
+.page1 .right .cart__number{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.page1 .right .cart__number .cart__count{
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    background-color: #ffb500;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.page1 .content{
+    position: absolute;
+    left: 5%;
+    bottom: 0%;
+    transform: translateY(-2%);
+
+    width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page1 .content h1{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 5.5rem;
+    font-weight: 500;
+    line-height: 0.95;
+    color: #2B1F1B;
+    letter-spacing: -2px;
+}
+
+.page1 .content p{
+    width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #4F4F4F;
+    font-weight: 400;
+}
+
+.page1 .content button{
+    width: 190px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #2C275A;
+    color: #fff;
+
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+.page1 .content button:hover{
+    background: #1d1944;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(44,39,90,.25);
+}
+.page2{
+    width:100%;
+    min-height:100vh;
+    background:#F7F2E5;
+    padding:80px 40px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.page2 h2{
+    text-align:center;
+    font-family:"Cormorant Garamond",serif;
+    font-size:4.5rem;
+    font-weight:400;
+    line-height:1;
+}
+
+.page2 h2 span{
+    font-style:italic;
+}
+
+.badge{
+    margin:50px 0;
+    padding:8px 20px;
+    border:2px solid black;
+    border-radius:8px;
+    background:#D6A7E9;
+    font-weight:bold;
+    font-size:2rem;
+    transform: rotate(-3deg);
+}
+
+.products{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:260px;
+    overflow: hidden;
+}
+
+.image{
+    height:260px;
+    border:2px solid black;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.tea1{
+    background-color: #C1EE91;
+}
+.tea2{
+    background-color: #C8E892;
+}
+.tea3{
+    background-color: #B0E8C1;
+}
+.tea4{
+    background-color: #FFD884;
+}
+
+.image img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card h3{
+    margin-top:15px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:2rem;
+    font-weight:500;
+}
+
+.price{
+    margin:10px 0;
+    font-weight:700;
+}
+
+.desc{
+    color:#555;
+    font-size:.9rem;
+    line-height:1.4;
+}
+
+.card button{
+    margin-top:15px;
+    width:70px;
+    height:40px;
+    border-radius:10px;
+    border:1px solid black;
+    background:white;
+    cursor:pointer;
+}
+
+.dots{
+    display:flex;
+    gap:10px;
+    margin:50px 0 30px;
+}
+
+.dots span{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#ccc;
+}
+
+.dots .active{
+    background:#2D2857;
+}
+
+.explore{
+    width:200px;
+    height:55px;
+    border:none;
+    border-radius:40px;
+    background:#2D2857;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+
+@media (max-width: 1024px){
+
+    .page1 .content{
+        width: 450px;
+    }
+
+    .page1 .content h1{
+        font-size: 4.5rem;
+    }
+
+    .page1 .right{
+        gap: 15px;
+    }
+
+    .page2 h2{
+        font-size: 3.5rem;
+    }
+
+    .products{
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .page1{
+        min-height: 100vh;
+        background-position: center;
+    }
+
+    .page1 nav{
+        height: auto;
+    }
+
+    .page1 nav .top{
+        font-size: .7rem;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .page1 nav .header{
+        padding: 12px 15px;
+        border-radius: 15px;
+    }
+
+    .page1 nav .header .menu{
+        display: block;
+    }
+    .page1 nav .header .left{
+        width: auto;
+        gap: 10px;
+        display: none;
+    }
+
+    .page1 .center img{
+        width: 130px;
+    }
+
+    .page1 .right{
+        width: auto;
+        gap: 10px;
+    }
+
+    .page1 .right a{
+        display: none;
+    }
+
+    .page1 .content{
+        width: 90%;
+        left: 5%;
+        bottom: 40px;
+    }
+
+    .page1 .content h1{
+        font-size: 3.5rem;
+    }
+
+    .page1 .content p{
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .page1 .content button{
+        width: 170px;
+        height: 50px;
+    }
+
+    .page2{
+        padding: 60px 20px;
+    }
+
+    .page2 h2{
+        font-size: 2.8rem;
+    }
+
+    .badge{
+        font-size: 1.5rem;
+        margin: 35px 0;
+    }
+
+    .products{
+        gap: 25px;
+    }
+
+    .card{
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .image{
+        height: 320px;
+    }
+
+    .card h3{
+        font-size: 1.8rem;
+    }
+
+}
+
+@media (max-width: 480px){
+
+    .page1 nav .header{
+        padding: 10px;
+    }
+
+    .page1 .left .nav-elem p{
+        display: none;
+    }
+
+    .page1 .center img{
+        width: 100px;
+    }
+
+    .page1 .content{
+        bottom: 20px;
+    }
+
+    .page1 .content h1{
+        font-size: 2.6rem;
+        line-height: 1;
+    }
+
+    .page1 .content p{
+        font-size: .9rem;
+    }
+
+    .page1 .content button{
+        width: 150px;
+        height: 45px;
+        font-size: .9rem;
+    }
+
+    .page2 h2{
+        font-size: 2rem;
+    }
+
+    .badge{
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+
+    .image{
+        height: 260px;
+    }
+
+    .card h3{
+        font-size: 1.5rem;
+    }
+
+    .price,
+    .desc{
+        font-size: .9rem;
+    }
+
+    .explore{
+        width: 180px;
+        height: 48px;
+    }
+
+}
