@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <h1>Task Manager</h1>
+
+    <div class="top">
+        <button id="themeBtn">Dark Mode</button>
+    </div>
+
+    <div class="box">
+        <form id="taskForm">
+            <input type="text" id="taskInput" placeholder="Enter Task">
+
+            <select id="category">
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <div class="box">
+        <input type="text" id="search" placeholder="Search Task">
+
+        <select id="filter">
+            <option value="All">All Categories</option>
+            <option value="Study">Study</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div class="count">
+        <p>Total Tasks: <span id="total">0</span></p>
+        <p>Completed: <span id="done">0</span></p>
+        <p>Pending: <span id="left">0</span></p>
+    </div>
+
+    <button id="clearBtn">Clear All Tasks</button>
+
+    <hr>
+
+    <h2>Tasks</h2>
+
+    <div id="taskList"></div>
+
+    <hr>
+
+    <h2>Event Demo</h2>
+
+    <p>Open the Console and click the button.</p>
+
+    <div id="one">
+        Grandparent
+
+        <div id="two">
+            Parent
+
+            <button id="three">
+                Child Button
+            </button>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2>Browser Rendering Process</h2>
+
+    <div class="flow">
+
+        <div class="step">HTML</div>
+        <div class="arrow">↓</div>
+
+        <div class="step">Parsing</div>
+        <div class="arrow">↓</div>
+
+        <div class="step">Tokenization</div>
+        <div class="arrow">↓</div>
+
+        <div class="step">DOM Tree</div>
+
+    </div>
+
+    <br>
+
+    <div class="flow">
+
+        <div class="step">CSS</div>
+        <div class="arrow">↓</div>
+
+        <div class="step">CSSOM Tree</div>
+
+    </div>
+
+    <br>
+
+    <div class="flow">
+
+        <div class="step">DOM Tree</div>
+
+        <div class="plus">+</div>
+
+        <div class="step">CSSOM Tree</div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step">Render Tree</div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step">Paint</div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step">Display on Screen</div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
