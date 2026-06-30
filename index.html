@@ -3,20 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kunal Gurav</title>
+    <title>Kunal Gurav - Assignments</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    padding:20px;
+}
+
+.box{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#222;
+    margin-bottom:10px;
+}
+
+p{
+    color:#666;
+    margin-bottom:30px;
+}
+
+.links{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.links a{
+    text-decoration:none;
+    background:#2a5298;
+    color:#fff;
+    padding:15px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.links a:hover{
+    background:#1e3c72;
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+@media(max-width:500px){
+    .box{
+        padding:25px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+}
+    </style>
 </head>
 <body>
-    <h1>Here's all the assignments</h1>
-    <ul>
-        <li>
+
+    <div class="box">
+        <h1>📚 HTML & CSS Assignments</h1>
+        <p>Select any assignment below</p>
+
+        <div class="links">
             <a href="./Assignment1/index.html">Assignment 1</a>
-            <a href="./Assignment2/index.html">Assignment 2</a>
+            <a href="./Assignment2/DesignOne/index.html">Assignment 2 - Design 1</a>
+            <a href="./Assignment2/DesignTwo/index.html">Assignment 2 - Design 2</a>
             <a href="./Assignment3/index.html">Assignment 3</a>
-            <a href="./Assignment4/index.html">Assignment 4</a>
+            <a href="./Assignment4/DesignOne/index.html">Assignment 4 - Design 1</a>
+            <a href="./Assignment4/DesignTwo/index.html">Assignment 4 - Design 2</a>
+            <a href="./Assignment4/DesignThree/index.html">Assignment 4 - Design 3</a>
             <a href="./Assignment5/index.html">Assignment 5</a>
             <a href="./Assignment6/index.html">Assignment 6</a>
             <a href="./Assignment7/index.html">Assignment 7</a>
-        </li>
-    </ul>
+        </div>
+    </div>
+
 </body>
 </html>
