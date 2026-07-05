@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: "#111827",
+                        sidebar: "#1f2937",
+                        card: "#1e293b",
+                        border: "#334155",
+                        primary: "#3b82f6",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark text-white">
+
+    <div class="h-screen flex justify-center items-center bg-[#111827] text-white" id="login">
+
+        <form class="w-[380px] bg-[#1E293B] border border-slate-700 rounded-2xl p-8 shadow-2xl flex flex-col gap-5"
+            id="log-form">
+
+            <h2 class="text-3xl font-bold text-center">
+                Login
+            </h2>
+
+            <p class="text-center text-slate-400 text-sm">
+                Welcome back! Please login to continue.
+            </p>
+
+            <div class="flex flex-col gap-2">
+                <label for="username" class="font-medium text-slate-300">
+                    Username
+                </label>
+
+                <input type="text" id="username" name="username" placeholder="Enter username"
+                    class="bg-[#111827] border border-slate-600 rounded-lg p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="password" class="font-medium text-slate-300">
+                    Password
+                </label>
+
+                <input type="password" id="password" name="password" placeholder="Enter password"
+                    class="bg-[#111827] border border-slate-600 rounded-lg p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <p class="text-sm text-slate-400 text-center">
+                Don't have an account?
+                <a href="#" class="text-blue-500 hover:text-blue-400 hover:underline" id="reg-btn">
+                    Register
+                </a>
+            </p>
+
+            <button type="submit"
+                class="bg-blue-600 hover:bg-blue-700 transition duration-200 text-white py-3 rounded-lg font-semibold">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+    <div class="h-screen flex justify-center items-center bg-[#111827] text-white" id="register">
+
+        <form class="w-[380px] bg-[#1E293B] border border-slate-700 rounded-2xl p-8 shadow-2xl flex flex-col gap-5"
+            id="reg-form">
+
+            <h2 class="text-3xl font-bold text-center">
+                Register
+            </h2>
+
+            <p class="text-center text-slate-400 text-sm">
+                Create your FinTrack Pro account
+            </p>
+
+            <!-- Username -->
+            <div class="flex flex-col gap-2">
+                <label for="username" class="font-medium text-slate-300">
+                    Username
+                </label>
+
+                <input required type="text" id="username" placeholder="Enter username"
+                    class="bg-[#111827] border border-slate-600 rounded-lg p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Email -->
+            <div class="flex flex-col gap-2">
+                <label for="email" class="font-medium text-slate-300">
+                    Email
+                </label>
+
+                <input required type="email" id="email" placeholder="Enter your email"
+                    class="bg-[#111827] border border-slate-600 rounded-lg p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Password -->
+            <div class="flex flex-col gap-2">
+                <label for="password" class="font-medium text-slate-300">
+                    Password
+                </label>
+
+                <input required type="password" id="password" placeholder="Create a password"
+                    class="bg-[#111827] border border-slate-600 rounded-lg p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <p class="text-center text-sm text-slate-400">
+                Already have an account?
+                <a href="#" class="text-blue-500 hover:text-blue-400 hover:underline font-medium" id="log-btn">
+                    Login
+                </a>
+            </p>
+
+            <button type="submit"
+                class="bg-blue-600 hover:bg-blue-700 transition-all duration-200 py-3 rounded-lg font-semibold">
+                Register
+            </button>
+
+        </form>
+
+    </div>
+
+    </div>
+    <div class="min-h-screen w-full bg-[#111827] text-white relative" style="display: none;" id="dashboard">
+        <div id="transaction-overlay"
+            class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 px-4 backdrop-blur-sm">
+            <div id="add-transaction-card"
+                class="w-full max-w-[420px] rounded-2xl border border-slate-700 bg-[#1E293B] p-6 shadow-2xl">
+                <div class="mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-semibold">Add Transaction</h2>
+                        <p class="mt-1 text-sm text-slate-400">Track your income or expense</p>
+                    </div>
+                    <button id="close-transaction-card" type="button"
+                        class="rounded-full border border-slate-600 p-2 text-slate-300 hover:bg-slate-700">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="transaction-form" class="space-y-4">
+                    <div>
+                        <label class="mb-2 block text-sm text-slate-300" for="transaction-title">Title</label>
+                        <input id="transaction-title" name="title" type="text" placeholder="Salary, Rent, Groceries"
+                            class="w-full rounded-lg border border-slate-600 bg-[#111827] p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="mb-2 block text-sm text-slate-300" for="transaction-type">Type</label>
+                            <select id="transaction-type" name="type"
+                                class="w-full rounded-lg border border-slate-600 bg-[#111827] p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm text-slate-300" for="transaction-amount">Amount</label>
+                            <input id="transaction-amount" name="amount" type="number" placeholder="0.00"
+                                class="w-full rounded-lg border border-slate-600 bg-[#111827] p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm text-slate-300" for="transaction-date">Date</label>
+                        <input id="transaction-date" name="date" type="date"
+                            class="w-full rounded-lg border border-slate-600 bg-[#111827] p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm text-slate-300"
+                            for="transaction-description">Description</label>
+                        <textarea id="transaction-description" name="description" rows="3"
+                            placeholder="Add a short note"
+                            class="w-full rounded-lg border border-slate-600 bg-[#111827] p-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+
+                    <div class="flex gap-3 pt-2">
+                        <button id="save-transaction" type="submit"
+                            class="flex-1 rounded-lg bg-blue-600 py-3 font-semibold text-white hover:bg-blue-700">Add</button>
+                        <button id="cancel-transaction" type="button"
+                            class="flex-1 rounded-lg border border-slate-600 py-3 font-semibold text-slate-300 hover:bg-slate-700">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <aside class="w-72 bg-sidebar border-r border-slate-700 flex flex-col justify-between">
+
+            <div>
+
+                <!-- Logo -->
+                <div class="p-8">
+                    <h1 class="text-3xl font-bold">FinTrack Pro</h1>
+                    <p class="text-gray-400 text-sm">
+                        Enterprise Finance
+                    </p>
+                </div>
+
+                <!-- Menu -->
+                <nav class="px-5 space-y-2">
+
+                    <a href="#"
+                        class="flex items-center gap-4 bg-slate-600 px-5 py-4 rounded-xl text-blue-400 text-xl font-semibold">
+
+                        Dashboard
+
+                    </a>
+
+                    <a href="#"
+                        class="flex items-center gap-4 px-5 py-4 rounded-xl text-gray-300 hover:bg-slate-700 text-xl">
+
+                        Settings
+
+                    </a>
+
+                </nav>
+
+            </div>
+
+            <!-- Button -->
+            <div class="p-6">
+                <button id="open-transaction-modal" type="button"
+                    class="w-full bg-blue-500 hover:bg-blue-600 py-4 rounded-xl text-xl font-semibold">
+
+                    + Add Transaction
+
+                </button>
+            </div>
+
+        </aside>
+
+
+        <!-- Main -->
+        <main class="flex-1 flex flex-col">
+
+            <!-- Navbar -->
+            <header class="h-16 border-b border-slate-700 bg-slate-800 flex items-center justify-end px-6 gap-4">
+
+                <span class="text-lg font-semibold">
+                    kunalgurav961
+                </span>
+
+                <button id="logout" class="border border-gray-500 px-4 py-2 rounded-lg hover:bg-slate-700 text-sm">
+
+                    Logout
+
+                </button>
+
+            </header>
+
+
+            <!-- Content -->
+            <div class="p-5 overflow-auto">
+
+                <!-- Heading -->
+                <div class="mb-5">
+
+                    <h1 class="text-2xl font-bold">
+                        Financial Overview
+                    </h1>
+
+                    <p class="text-gray-400 mt-1 text-sm">
+                        Real-time tracking application
+                    </p>
+
+                </div>
+
+                <!-- Cards -->
+                <div class="grid grid-cols-4 gap-4">
+
+                    <div class="bg-card border border-border rounded-2xl p-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-slate-700 mb-4 flex justify-center items-center">
+                            <i class="ri-bank-line text-2xl"></i>
+                        </div>
+
+                        <p class="text-gray-400 text-lg">
+                            Current Balance
+                        </p>
+
+                        <h2 id="balance-value" class="text-3xl font-bold mt-2">
+                            $0.00
+                        </h2>
+
+                    </div>
+
+                    <div class="bg-card border border-border rounded-2xl p-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-green-200 mb-4 flex justify-center items-center">
+                            <img src="./Graph Arrow Increase.png" class="w-[70%]" alt="">
+                        </div>
+
+                        <p class="text-gray-400 text-lg">
+                            Total Income
+                        </p>
+
+                        <h2 id="income-value" class="text-3xl font-bold text-green-600 mt-2">
+                            $0.00
+                        </h2>
+
+                    </div>
+
+                    <div class="bg-card border border-border rounded-2xl p-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-red-200 mb-4 flex justify-center items-center">
+                            <img src="./Graph Arrow Increase.png" class="w-[70%]" style="rotate: 180deg;" alt="">
+
+                        </div>
+
+                        <p class="text-gray-400 text-lg">
+                            Total Expense
+                        </p>
+
+                        <h2 id="expense-value" class="text-3xl font-bold text-red-600 mt-2">
+                            $0.00
+                        </h2>
+
+                    </div>
+
+                    <div class="bg-card border border-border rounded-2xl p-4">
+
+                        <div class="w-12 h-12 rounded-xl bg-slate-700 mb-4 flex justify-center items-center">
+                            <img src="./Piggy Bank.png" class="w-[70%]" alt="">
+                        </div>
+
+                        <p class="text-gray-400 text-lg">
+                            Total Transactions
+                        </p>
+
+                        <h2 id="transaction-count" class="text-3xl font-bold mt-2">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Bottom -->
+                <div class="grid grid-cols-3 gap-4 mt-4">
+
+                    <!-- Chart -->
+                    <div class="col-span-2 bg-card border border-border rounded-2xl p-4">
+
+                        <h2 class="text-2xl font-bold mb-4">
+                            Cash Flow Analysis
+                        </h2>
+
+                        <div
+                            class="bg-dark rounded-xl h-[280px] flex items-center justify-center text-gray-500 text-xl">
+
+                            Chart Here
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Preference -->
+                    <div class="bg-card border border-border rounded-2xl p-4 h-fit">
+
+                        <h2 class="text-2xl font-bold mb-6">
+
+                            Preferences
+
+                        </h2>
+
+                        <div class="flex justify-between items-center">
+
+                            <span class="text-lg font-semibold">
+
+                                Dark Mode
+
+                            </span>
+
+                            <button id="theme-toggle" class="w-16 h-9 rounded-full bg-blue-500 relative">
+
+                                <div id="theme-toggle-circle"
+                                    class="w-7 h-7 rounded-full bg-white absolute right-1 top-1"></div>
+
+                            </button>
+
+                        </div>
+
+                        <hr class="my-4 border-slate-600">
+
+                        <button id="reset-data"
+                            class="w-full bg-red-100 text-red-700 py-3 rounded-xl font-semibold text-base">
+
+                            Reset All Data
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

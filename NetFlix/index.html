@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetFlix | Kunal Gurav</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class="page1">
+        <nav>
+            <img src="images/netflix.png" alt="NetFlix">
+            <div class="buttons">
+                <select name="lang" id="lang">
+                    <option value="Marathi">Marathi</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+                <button class="signin">Sign In</button>
+            </div>
+        </nav>
+        <div class="content">
+            <h1>Unlimited movies, shows, and more</h1>
+            <p>Starts at ₹149. Cancel at any time.</p>
+            <p>Ready to watch? Enter your email to create or restart your membership.</p>
+            <form onsubmit="signin()">
+                <input type="email" id="email" placeholder="Email address">
+                <input type="submit" value="Get Started">
+                <i class="ri-arrow-right-wide-line"></i>
+            </form>
+        </div>
+        <div class="bottom-gradient"></div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

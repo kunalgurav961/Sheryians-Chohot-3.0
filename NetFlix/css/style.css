@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.page1{
+    width: 100%;
+    height: 100%;
+    background: url(../images/landing-bg.png) center center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+    opacity: 2;
+}
+.page1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.575);
+}
+
+.page1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.769),
+        transparent
+    );
+}
+
+.bottom-gradient{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:250px;
+
+    background:linear-gradient(
+        to top,
+        #0000009b,
+        transparent
+    );
+}
+.page1 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    z-index: 10;
+}
