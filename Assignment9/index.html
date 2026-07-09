@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Dashboard Home
+    ========================== -->
+
+    <section id="dashboard">
+
+        <h1>Productivity Dashboard</h1>
+        <p>Select a tool to get started.</p>
+
+        <div class="dashboard-grid">
+
+            <div class="card" data-target="todo-section">
+                <h2>📝 Todo List</h2>
+                <p>Manage your daily tasks.</p>
+            </div>
+
+            <div class="card" data-target="timer-section">
+                <h2>⏱ Pomodoro Timer</h2>
+                <p>Stay focused while studying.</p>
+            </div>
+
+            <div class="card" data-target="quote-section">
+                <h2>💡 Motivation Quotes</h2>
+                <p>Read inspiring quotes.</p>
+            </div>
+
+            <div class="card" data-target="theme-section">
+                <h2>🎨 Theme Switch</h2>
+                <p>Change Light/Dark mode.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         Todo Section
+    ========================== -->
+
+    <section id="todo-section" class="feature hidden">
+
+        <button class="back-btn">← Back</button>
+
+        <h2>Todo List</h2>
+
+        <div class="todo-input">
+
+            <input type="text" id="task-input" placeholder="Enter a new task">
+
+            <button id="add-task-btn">
+                Add Task
+            </button>
+
+        </div>
+
+        <ul id="task-list">
+
+            <!-- Tasks will appear here -->
+
+        </ul>
+
+    </section>
+
+    <!-- =========================
+         Pomodoro Timer Section
+    ========================== -->
+
+    <section id="timer-section" class="feature hidden">
+
+        <button class="back-btn">← Back</button>
+
+        <h2>Pomodoro Timer</h2>
+
+        <div class="timer-box">
+
+            <h1 id="timer">
+                25:00
+            </h1>
+
+            <div class="timer-buttons">
+
+                <button id="start-btn">
+                    Start
+                </button>
+
+                <button id="pause-btn">
+                    Pause
+                </button>
+
+                <button id="reset-btn">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         Quote Section
+    ========================== -->
+
+    <section id="quote-section" class="feature hidden">
+
+        <button class="back-btn">← Back</button>
+
+        <h2>Motivation Quote</h2>
+
+        <div class="quote-box">
+
+            <p id="quote">
+                Click the button to get a quote.
+            </p>
+
+            <button id="new-quote-btn">
+                New Quote
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         Theme Section
+    ========================== -->
+
+    <section id="theme-section" class="feature hidden">
+
+        <button class="back-btn">← Back</button>
+
+        <h2>Theme Switch</h2>
+
+        <p>
+            Change the appearance of the dashboard.
+        </p>
+
+        <button id="theme-btn">
+            Toggle Theme
+        </button>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
