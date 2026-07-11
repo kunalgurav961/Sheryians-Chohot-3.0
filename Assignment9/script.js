@@ -51,6 +51,30 @@ let goals = readStorage(storageKeys.goals, []);
 let planner = readStorage(storageKeys.planner, {});
 let timerSeconds = 25 * 60;
 let timerInterval = null;
+let lastFallbackQuoteIndex = -1;
+
+const fallbackQuotes = [
+    {
+        content: "Small progress is still progress. Pick one useful thing and begin.",
+        author: "Dashboard fallback"
+    },
+    {
+        content: "The secret of getting ahead is getting started.",
+        author: "Mark Twain"
+    },
+    {
+        content: "Do what you can, with what you have, where you are.",
+        author: "Theodore Roosevelt"
+    },
+    {
+        content: "Great things are done by a series of small things brought together.",
+        author: "Vincent van Gogh"
+    },
+    {
+        content: "Action is the foundational key to all success.",
+        author: "Pablo Picasso"
+    }
+];
 
 function readStorage(key, fallback) {
     try {
@@ -315,7 +339,9 @@ async function fetchQuote() {
     quoteAuthor.textContent = "";
 
     try {
-        const response = await fetch("https://api.quotable.io/random?tags=inspirational|success|wisdom");
+        const response = await fetch(`https://api.quotable.io/random?tags=inspirational|success|wisdom&_=${Date.now()}`, {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
             throw new Error("Quote request failed");
@@ -325,12 +351,26 @@ async function fetchQuote() {
         quoteText.textContent = `"${data.content}"`;
         quoteAuthor.textContent = data.author ? `- ${data.author}` : "";
     } catch (error) {
-        quoteText.textContent = "Small progress is still progress. Pick one useful thing and begin.";
-        quoteAuthor.textContent = "- Dashboard fallback";
+        const quote = getFallbackQuote();
+        quoteText.textContent = `"${quote.content}"`;
+        quoteAuthor.textContent = `- ${quote.author}`;
     }
 }
 
 newQuoteBtn.addEventListener("click", fetchQuote);
+
+function getFallbackQuote() {
+    let index = Math.floor(Math.random() * fallbackQuotes.length);
+
+    if (fallbackQuotes.length > 1) {
+        while (index === lastFallbackQuoteIndex) {
+            index = Math.floor(Math.random() * fallbackQuotes.length);
+        }
+    }
+
+    lastFallbackQuoteIndex = index;
+    return fallbackQuotes[index];
+}
 
 const weatherCodes = {
     0: "Clear sky",
