@@ -9,152 +9,196 @@
 </head>
 
 <body>
+    <main class="app-shell">
+        <section id="dashboard" class="dashboard">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Daily command center</p>
+                    <h1>Productivity Dashboard</h1>
+                </div>
 
-    <!-- =========================
-         Dashboard Home
-    ========================== -->
+                <div class="topbar-actions">
+                    <div class="clock-card" aria-live="polite">
+                        <span id="current-date">Loading date</span>
+                        <strong id="current-time">--:--</strong>
+                    </div>
+                    <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle theme" title="Toggle theme">
+                        <span id="theme-icon">Moon</span>
+                    </button>
+                </div>
+            </header>
 
-    <section id="dashboard">
+            <section class="hero-panel">
+                <div>
+                    <p id="day-message">Plan the day with a clear head.</p>
+                    <h2 id="greeting">Good day</h2>
+                </div>
+                <div class="weather-card">
+                    <span class="label">Local weather</span>
+                    <strong id="weather-temp">Detecting...</strong>
+                    <span id="weather-summary">Allow location access for live conditions.</span>
+                </div>
+            </section>
 
-        <h1>Productivity Dashboard</h1>
-        <p>Select a tool to get started.</p>
-
-        <div class="dashboard-grid">
-
-            <div class="card" data-target="todo-section">
-                <h2>📝 Todo List</h2>
-                <p>Manage your daily tasks.</p>
-            </div>
-
-            <div class="card" data-target="timer-section">
-                <h2>⏱ Pomodoro Timer</h2>
-                <p>Stay focused while studying.</p>
-            </div>
-
-            <div class="card" data-target="quote-section">
-                <h2>💡 Motivation Quotes</h2>
-                <p>Read inspiring quotes.</p>
-            </div>
-
-            <div class="card" data-target="theme-section">
-                <h2>🎨 Theme Switch</h2>
-                <p>Change Light/Dark mode.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- =========================
-         Todo Section
-    ========================== -->
-
-    <section id="todo-section" class="feature hidden">
-
-        <button class="back-btn">← Back</button>
-
-        <h2>Todo List</h2>
-
-        <div class="todo-input">
-
-            <input type="text" id="task-input" placeholder="Enter a new task">
-
-            <button id="add-task-btn">
-                Add Task
-            </button>
-
-        </div>
-
-        <ul id="task-list">
-
-            <!-- Tasks will appear here -->
-
-        </ul>
-
-    </section>
-
-    <!-- =========================
-         Pomodoro Timer Section
-    ========================== -->
-
-    <section id="timer-section" class="feature hidden">
-
-        <button class="back-btn">← Back</button>
-
-        <h2>Pomodoro Timer</h2>
-
-        <div class="timer-box">
-
-            <h1 id="timer">
-                25:00
-            </h1>
-
-            <div class="timer-buttons">
-
-                <button id="start-btn">
-                    Start
+            <section class="dashboard-grid" aria-label="Dashboard tools">
+                <button class="tool-card" type="button" data-target="todo-section">
+                    <span class="tool-icon">Tasks</span>
+                    <h3>Todo & Goals</h3>
+                    <p>Capture tasks, mark priorities, and close the loop.</p>
                 </button>
 
-                <button id="pause-btn">
-                    Pause
+                <button class="tool-card" type="button" data-target="planner-section">
+                    <span class="tool-icon">Plan</span>
+                    <h3>Daily Planner</h3>
+                    <p>Save notes against each hour of the day.</p>
                 </button>
 
-                <button id="reset-btn">
-                    Reset
+                <button class="tool-card" type="button" data-target="timer-section">
+                    <span class="tool-icon">Focus</span>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Run focused 25-minute work sessions.</p>
                 </button>
 
+                <button class="tool-card" type="button" data-target="quote-section">
+                    <span class="tool-icon">Spark</span>
+                    <h3>Motivation Quote</h3>
+                    <p>Pull a fresh line of inspiration from a live API.</p>
+                </button>
+
+                <button class="tool-card" type="button" data-target="weather-section">
+                    <span class="tool-icon">Sky</span>
+                    <h3>Weather</h3>
+                    <p>Check local temperature, wind, and conditions.</p>
+                </button>
+
+                <button class="tool-card" type="button" data-target="settings-section">
+                    <span class="tool-icon">Mode</span>
+                    <h3>Theme Settings</h3>
+                    <p>Switch light or dark mode and keep your choice.</p>
+                </button>
+            </section>
+        </section>
+
+        <section id="todo-section" class="feature-screen hidden" aria-labelledby="todo-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Make it concrete</p>
+                    <h2 id="todo-title">Todo List & Daily Goals</h2>
+                </div>
+            </header>
+
+            <div class="split-layout">
+                <article class="panel">
+                    <h3>Add a task</h3>
+                    <form id="task-form" class="input-row">
+                        <input id="task-input" type="text" placeholder="Example: Finish JavaScript assignment" autocomplete="off">
+                        <button type="submit">Add</button>
+                    </form>
+                    <ul id="task-list" class="item-list" aria-live="polite"></ul>
+                </article>
+
+                <article class="panel">
+                    <h3>Daily goals</h3>
+                    <form id="goal-form" class="input-row">
+                        <input id="goal-input" type="text" placeholder="Example: Study for 90 minutes" autocomplete="off">
+                        <button type="submit">Add</button>
+                    </form>
+                    <ul id="goal-list" class="item-list" aria-live="polite"></ul>
+                </article>
             </div>
+        </section>
 
-        </div>
+        <section id="planner-section" class="feature-screen hidden" aria-labelledby="planner-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Hour by hour</p>
+                    <h2 id="planner-title">Daily Planner</h2>
+                </div>
+            </header>
 
-    </section>
+            <div id="planner-list" class="planner-list"></div>
+        </section>
 
-    <!-- =========================
-         Quote Section
-    ========================== -->
+        <section id="timer-section" class="feature-screen hidden" aria-labelledby="timer-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Focus session</p>
+                    <h2 id="timer-title">Pomodoro Timer</h2>
+                </div>
+            </header>
 
-    <section id="quote-section" class="feature hidden">
+            <article class="timer-panel">
+                <p id="timer-status">Ready to focus</p>
+                <div id="timer-display">25:00</div>
+                <div class="timer-controls">
+                    <button id="start-btn" type="button">Start</button>
+                    <button id="pause-btn" type="button">Pause</button>
+                    <button id="reset-btn" type="button">Reset</button>
+                </div>
+            </article>
+        </section>
 
-        <button class="back-btn">← Back</button>
+        <section id="quote-section" class="feature-screen hidden" aria-labelledby="quote-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Fresh perspective</p>
+                    <h2 id="quote-title">Motivation Quote</h2>
+                </div>
+            </header>
 
-        <h2>Motivation Quote</h2>
+            <article class="quote-panel">
+                <blockquote id="quote-text">Loading a quote...</blockquote>
+                <p id="quote-author"></p>
+                <button id="new-quote-btn" type="button">New Quote</button>
+            </article>
+        </section>
 
-        <div class="quote-box">
+        <section id="weather-section" class="feature-screen hidden" aria-labelledby="weather-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Outside check</p>
+                    <h2 id="weather-title">Weather Widget</h2>
+                </div>
+            </header>
 
-            <p id="quote">
-                Click the button to get a quote.
-            </p>
+            <article class="weather-detail panel">
+                <span class="label">Current location weather</span>
+                <strong id="weather-detail-temp">Waiting for location</strong>
+                <p id="weather-detail-summary">Use the button below if the browser asks again.</p>
+                <div class="weather-stats">
+                    <span id="weather-wind">Wind: --</span>
+                    <span id="weather-updated">Updated: --</span>
+                </div>
+                <button id="refresh-weather-btn" type="button">Refresh Weather</button>
+            </article>
+        </section>
 
-            <button id="new-quote-btn">
-                New Quote
-            </button>
+        <section id="settings-section" class="feature-screen hidden" aria-labelledby="settings-title">
+            <header class="feature-header">
+                <button class="back-btn" type="button">Back</button>
+                <div>
+                    <p class="eyebrow">Personalize</p>
+                    <h2 id="settings-title">Theme Settings</h2>
+                </div>
+            </header>
 
-        </div>
-
-    </section>
-
-    <!-- =========================
-         Theme Section
-    ========================== -->
-
-    <section id="theme-section" class="feature hidden">
-
-        <button class="back-btn">← Back</button>
-
-        <h2>Theme Switch</h2>
-
-        <p>
-            Change the appearance of the dashboard.
-        </p>
-
-        <button id="theme-btn">
-            Toggle Theme
-        </button>
-
-    </section>
+            <article class="panel settings-panel">
+                <h3>Appearance</h3>
+                <p>Your theme choice is saved in local storage.</p>
+                <label class="switch-row" for="theme-checkbox">
+                    <span>Dark mode</span>
+                    <input id="theme-checkbox" type="checkbox">
+                </label>
+            </article>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>

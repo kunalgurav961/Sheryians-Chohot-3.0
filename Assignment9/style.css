@@ -1,295 +1,514 @@
-/* ===========================
-   CSS VARIABLES
-=========================== */
-
-:root{
-    --bg-color:#f4f4f4;
-    --card-color:#ffffff;
-    --text-color:#222;
-    --primary:#4f46e5;
-    --secondary:#6366f1;
-    --border:#dddddd;
+:root {
+    --bg: #f5f7fb;
+    --bg-soft: #e8edf5;
+    --surface: #ffffff;
+    --surface-strong: #f9fbff;
+    --text: #172033;
+    --muted: #637083;
+    --line: #dce3ee;
+    --primary: #2563eb;
+    --primary-strong: #1746a2;
+    --accent: #10b981;
+    --danger: #dc2626;
+    --shadow: 0 18px 45px rgba(25, 38, 67, 0.12);
 }
 
-.dark-theme{
-    --bg-color:#1e1e1e;
-    --card-color:#2c2c2c;
-    --text-color:#ffffff;
-    --primary:#6366f1;
-    --secondary:#818cf8;
-    --border:#444;
+body.dark {
+    --bg: #12151c;
+    --bg-soft: #1b2230;
+    --surface: #202633;
+    --surface-strong: #272f40;
+    --text: #eef3fb;
+    --muted: #a8b3c5;
+    --line: #364154;
+    --primary: #60a5fa;
+    --primary-strong: #93c5fd;
+    --accent: #34d399;
+    --danger: #f87171;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
-/* ===========================
-   RESET
-=========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    background:var(--bg-color);
-    color:var(--text-color);
-    transition:.3s;
-    min-height:100vh;
-    padding:30px;
+html {
+    min-height: 100%;
 }
 
-/* ===========================
-   COMMON
-=========================== */
-
-.hidden{
-    display:none;
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.46)),
+        var(--dynamic-bg, linear-gradient(135deg, #dbeafe, #fef3c7));
+    color: var(--text);
+    transition: background 0.35s ease, color 0.25s ease;
 }
 
-button{
-    cursor:pointer;
-    border:none;
-    outline:none;
+body.dark {
+    background:
+        linear-gradient(135deg, rgba(18, 21, 28, 0.82), rgba(18, 21, 28, 0.58)),
+        var(--dynamic-bg, linear-gradient(135deg, #111827, #312e81));
 }
 
-/* ===========================
-   DASHBOARD
-=========================== */
-
-#dashboard{
-    max-width:1100px;
-    margin:auto;
+button,
+input,
+textarea {
+    font: inherit;
 }
 
-#dashboard h1{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:10px;
+button {
+    border: 0;
+    cursor: pointer;
 }
 
-#dashboard p{
-    text-align:center;
-    margin-bottom:40px;
-    color:gray;
+.hidden {
+    display: none !important;
 }
 
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+.app-shell {
+    width: min(1160px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0;
 }
 
-/* ===========================
-   CARDS
-=========================== */
-
-.card{
-    background:var(--card-color);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:30px;
-    text-align:center;
-    transition:.3s;
+.topbar,
+.feature-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+.topbar h1,
+.feature-header h2 {
+    margin: 6px 0 0;
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0;
 }
 
-.card h2{
-    margin-bottom:15px;
+.feature-header h2 {
+    font-size: clamp(1.8rem, 3vw, 3rem);
 }
 
-.card p{
-    margin:0;
+.eyebrow,
+.label {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-/* ===========================
-   FEATURE SECTIONS
-=========================== */
-
-.feature{
-    max-width:800px;
-    margin:auto;
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.feature h2{
-    margin:25px 0;
-    text-align:center;
+.clock-card,
+.weather-card,
+.panel,
+.timer-panel,
+.quote-panel {
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
 }
 
-/* ===========================
-   BACK BUTTON
-=========================== */
-
-.back-btn{
-    background:var(--primary);
-    color:white;
-    padding:10px 20px;
-    border-radius:6px;
-    margin-bottom:20px;
+.clock-card {
+    display: grid;
+    gap: 4px;
+    min-width: 170px;
+    padding: 12px 14px;
 }
 
-.back-btn:hover{
-    background:var(--secondary);
+.clock-card span {
+    color: var(--muted);
+    font-size: 0.85rem;
 }
 
-/* ===========================
-   TODO
-=========================== */
-
-.todo-input{
-    display:flex;
-    gap:10px;
-    margin-bottom:25px;
+.clock-card strong {
+    font-size: 1.35rem;
 }
 
-.todo-input input{
-    flex:1;
-    padding:12px;
-    border:1px solid var(--border);
-    border-radius:6px;
-    background:var(--card-color);
-    color:var(--text-color);
+.icon-button {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    font-size: 0.72rem;
+    font-weight: 800;
 }
 
-.todo-input button{
-    background:var(--primary);
-    color:white;
-    padding:12px 18px;
-    border-radius:6px;
+.hero-panel {
+    display: grid;
+    grid-template-columns: 1fr minmax(230px, 330px);
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 20px;
 }
 
-.todo-input button:hover{
-    background:var(--secondary);
+.hero-panel > div:first-child {
+    min-height: 220px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #ffffff;
+    border-radius: 8px;
+    background:
+        linear-gradient(120deg, rgba(15, 23, 42, 0.72), rgba(37, 99, 235, 0.2)),
+        var(--dynamic-bg, linear-gradient(135deg, #2563eb, #f59e0b));
+    box-shadow: var(--shadow);
 }
 
-#task-list{
-    list-style:none;
+.hero-panel h2 {
+    margin: 6px 0 0;
+    font-size: clamp(2rem, 5vw, 4.6rem);
+    line-height: 0.95;
+    letter-spacing: 0;
 }
 
-#task-list li{
-    background:var(--card-color);
-    border:1px solid var(--border);
-    padding:15px;
-    margin-bottom:10px;
-    border-radius:6px;
+.hero-panel p {
+    margin: 0;
+    max-width: 520px;
 }
 
-/* ===========================
-   TIMER
-=========================== */
-
-.timer-box{
-    background:var(--card-color);
-    border:1px solid var(--border);
-    border-radius:10px;
-    text-align:center;
-    padding:40px;
+.weather-card {
+    display: grid;
+    align-content: center;
+    gap: 8px;
+    padding: 22px;
 }
 
-#timer{
-    font-size:70px;
-    margin-bottom:30px;
+.weather-card strong,
+.weather-detail strong {
+    font-size: 2.2rem;
 }
 
-.timer-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
-.timer-buttons button{
-    background:var(--primary);
-    color:white;
-    padding:12px 20px;
-    border-radius:6px;
+.tool-card {
+    min-height: 190px;
+    padding: 22px;
+    text-align: left;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.timer-buttons button:hover{
-    background:var(--secondary);
+.tool-card:hover,
+.tool-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    outline: none;
 }
 
-/* ===========================
-   QUOTE
-=========================== */
-
-.quote-box{
-    background:var(--card-color);
-    border:1px solid var(--border);
-    border-radius:10px;
-    text-align:center;
-    padding:40px;
+.tool-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    height: 32px;
+    padding: 0 10px;
+    margin-bottom: 26px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--primary-strong);
+    font-size: 0.78rem;
+    font-weight: 800;
 }
 
-#quote{
-    font-size:22px;
-    margin-bottom:25px;
-    line-height:1.6;
+.tool-card h3,
+.panel h3 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
 }
 
-#new-quote-btn{
-    background:var(--primary);
-    color:white;
-    padding:12px 22px;
-    border-radius:6px;
+.tool-card p,
+.panel p,
+.weather-detail p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
 }
 
-#new-quote-btn:hover{
-    background:var(--secondary);
+.feature-screen {
+    min-height: calc(100vh - 64px);
 }
 
-/* ===========================
-   THEME
-=========================== */
-
-#theme-section{
-    text-align:center;
+.back-btn,
+.input-row button,
+.timer-controls button,
+#new-quote-btn,
+#refresh-weather-btn {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 800;
 }
 
-#theme-btn{
-    margin-top:25px;
-    background:var(--primary);
-    color:white;
-    padding:12px 25px;
-    border-radius:6px;
+.back-btn {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
 }
 
-#theme-btn:hover{
-    background:var(--secondary);
+.split-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+.panel,
+.timer-panel,
+.quote-panel {
+    padding: 22px;
+}
 
-@media(max-width:768px){
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    margin: 16px 0;
+}
 
-    body{
-        padding:20px;
+input,
+textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-strong);
+    color: var(--text);
+    padding: 12px 14px;
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary);
+}
+
+.item-list {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    gap: 8px;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-strong);
+}
+
+.item.completed .item-text {
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.item.important {
+    border-color: var(--danger);
+}
+
+.item button {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.item button.active {
+    background: var(--danger);
+    color: #ffffff;
+}
+
+.planner-list {
+    display: grid;
+    gap: 10px;
+}
+
+.planner-row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.planner-row label {
+    color: var(--muted);
+    font-weight: 800;
+    padding-top: 12px;
+}
+
+.planner-row textarea {
+    min-height: 52px;
+    resize: vertical;
+}
+
+.timer-panel,
+.quote-panel {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    text-align: center;
+}
+
+#timer-status {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+#timer-display {
+    font-size: clamp(4rem, 14vw, 9rem);
+    font-weight: 900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quote-panel blockquote {
+    margin: 0;
+    max-width: 760px;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.25;
+}
+
+#quote-author {
+    margin: -6px 0 8px;
+    color: var(--muted);
+}
+
+.weather-detail {
+    display: grid;
+    gap: 14px;
+    max-width: 680px;
+}
+
+.weather-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.weather-stats span {
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.settings-panel {
+    max-width: 560px;
+}
+
+.switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 22px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-strong);
+    font-weight: 800;
+}
+
+.switch-row input {
+    width: 22px;
+    height: 22px;
+}
+
+@media (max-width: 880px) {
+    .topbar,
+    .feature-header,
+    .hero-panel {
+        grid-template-columns: 1fr;
     }
 
-    #dashboard h1{
-        font-size:30px;
+    .topbar,
+    .feature-header {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
-    .todo-input{
-        flex-direction:column;
+    .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
     }
 
-    #timer{
-        font-size:55px;
+    .dashboard-grid,
+    .split-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .app-shell {
+        width: min(100% - 20px, 1160px);
+        padding: 18px 0;
     }
 
-    .timer-buttons{
-        flex-direction:column;
+    .topbar-actions,
+    .input-row,
+    .planner-row,
+    .item {
+        grid-template-columns: 1fr;
     }
 
-    .timer-buttons button{
-        width:100%;
+    .clock-card,
+    .icon-button,
+    .input-row button,
+    .timer-controls button {
+        width: 100%;
     }
 
+    .hero-panel > div:first-child,
+    .panel,
+    .timer-panel,
+    .quote-panel {
+        padding: 18px;
+    }
 }
