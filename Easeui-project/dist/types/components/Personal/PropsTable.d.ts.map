@@ -1,0 +1,1 @@
+{"version":3,"file":"PropsTable.d.ts","sourceRoot":"","sources":["../../../../src/components/Personal/PropsTable.tsx"],"names":[],"mappings":"AACA,UAAU,eAAe;IACvB,IAAI,EAAE;QACJ,IAAI,EAAE,MAAM,CAAC;QACb,IAAI,EAAE,MAAM,CAAC;QACb,OAAO,EAAE,MAAM,CAAC;QAChB,WAAW,EAAE,MAAM,CAAC;KACrB,EAAE,CAAC;CACL;AAED,QAAA,MAAM,UAAU,GAAI,UAAU,eAAe,4CA8C5C,CAAC;AAEF,eAAe,UAAU,CAAC"}
